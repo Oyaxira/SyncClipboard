@@ -54,13 +54,13 @@ jobs:
         src\SyncClipboard.WinUI3\SyncClipboard.WinUI3.csproj
         /p:Platform=${{ matrix.cpu }}
         /p:RuntimeIdentifier=win-${{ matrix.cpu }}
-        /p:Configuration=Release
+        /p:Configuration=Debug
         /p:WindowsAppSDKSelfContained=${{ matrix.if_app_sdk }}
         /p:SelfContained=${{ matrix.if_self }}
         /v:m -restore
 
     - name: copy SyncClipboard.WinUI3
-      run: xcopy src\SyncClipboard.WinUI3\bin\${{ matrix.cpu }}\Release\net9.0-windows10.0.19041.0\win-${{ matrix.cpu }} WinUI3\ /s /e
+      run: xcopy src\SyncClipboard.WinUI3\bin\${{ matrix.cpu }}\Debug\net9.0-windows10.0.19041.0\win-${{ matrix.cpu }} WinUI3\ /s /e
 
     - name: Upload build artifacts SyncClipboard.WinUI3
       uses: actions/upload-artifact@v4
