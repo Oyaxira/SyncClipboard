@@ -7,22 +7,16 @@ jobs:
   build:
     strategy:
       matrix:
-        cpu: [x64, arm64]
-        dotnet_runtime: [self-contained, no-self-contained]
-        win_app_sdk: ['win_app_sdk', 'no_win_app_sdk']
+        cpu: [x64]
+        dotnet_runtime: [self-contained]
+        win_app_sdk: ['win_app_sdk']
         include:
           - dotnet_runtime: 'self-contained'
             if_self: 'true'
             dotnet_runtime_filename: ''
-          - dotnet_runtime: 'no-self-contained'
-            dotnet_runtime_filename: '_no-dotnet-runtime'
-            if_self: 'false'
           - win_app_sdk: 'win_app_sdk'
             if_app_sdk: 'true'
             win_app_sdk_filename: ''
-          - win_app_sdk: 'no_win_app_sdk'
-            if_app_sdk: 'false'
-            win_app_sdk_filename: '_no-win-app-sdk'
 
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
